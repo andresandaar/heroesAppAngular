@@ -1,3 +1,4 @@
+
 export const environments = {
-  baseUrl: 'otraurl de produccion',
+  baseUrl: 'http://localhost:3000',
 };
