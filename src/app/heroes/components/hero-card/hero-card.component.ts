@@ -9,6 +9,7 @@ import { Hero } from '../../interfaces/hero.interface';
 export class HeroCardComponent implements OnInit{
   /* @Output() methodName = new EventEmitter<Class>(); */
   @Input() hero!: Hero;
+
 ngOnInit(): void {
  if (!this.hero) throw new Error("Hero property is requered");
 }
