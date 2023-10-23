@@ -11,7 +11,7 @@ export class HeroesService {
   private baseUrl:string=environments.baseUrl
 
   constructor(private http:HttpClient) {
-    console.log(this.baseUrl)
+
   }
   getHeroes():Observable<Hero[]>{
     return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
