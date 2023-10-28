@@ -10,6 +10,7 @@ import { HeroPageComponent } from './pages/hero-page/hero-page.component';
 import { MaterialModule } from '../material/material.module';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroImagePipe } from './pipes/hero-image.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,8 +24,12 @@ import { HeroImagePipe } from './pipes/hero-image.pipe';
     HeroPageComponent,
     HeroCardComponent,
     HeroImagePipe,
-
   ],
-  imports: [CommonModule, HeroesRoutingModule, MaterialModule],
+  imports: [
+    CommonModule,
+    HeroesRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HeroesModule {}

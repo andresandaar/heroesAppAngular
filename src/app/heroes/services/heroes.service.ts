@@ -5,20 +5,22 @@ import { Hero } from '../interfaces/hero.interface';
 import { environments } from 'src/environments/environments';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeroesService {
-  private baseUrl:string=environments.baseUrl
+  private baseUrl: string = environments.baseUrl;
 
-  constructor(private http:HttpClient) {
-
-  }
-  getHeroes():Observable<Hero[]>{
+  constructor(private http: HttpClient) {}
+  getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
   }
-  getHeroeById(id:string):Observable<Hero | undefined>{
+  getHeroeById(id: string): Observable<Hero | undefined> {
     //Sie el id no existe y el get manda algun error , se retornara un undefined
-    return this.http.get<Hero>(`${this.baseUrl}/heroes/${id}`)
-    .pipe(catchError(error=> of (undefined)))
+    return this.http
+      .get<Hero>(`${this.baseUrl}/heroes/${id}`)
+      .pipe(catchError((error) => of(undefined)));
+  }
+  getSuggestions(query: string): Observable<Hero[]> {
+    return this.http.get<Hero []>(`${this.baseUrl}/heroes?q=${query}&_limit=6`)
   }
 }
