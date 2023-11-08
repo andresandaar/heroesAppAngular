@@ -10,8 +10,7 @@ import { AuthService } from '../services/auth.service';
    const router = inject(Router);
    return authService.checkAuthentication().pipe(
      tap((isAuthenticated) => {
-       if (isAuthenticated) router.navigate(['.']);
-       return router.navigate(['./auth/login']);
+       if (isAuthenticated) {router.navigate(['./'])}
      }),
      map(isAuthenticated=>!isAuthenticated)
    );
