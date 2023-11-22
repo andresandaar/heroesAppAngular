@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
-import { environments } from 'src/environments/environments';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
-  private baseUrl: string = environments.baseUrl;
+  private baseUrl: string = environment.andresApiRestBaseUrl;
 
   constructor(private http: HttpClient) {}
   getHeroes(): Observable<Hero[]> {

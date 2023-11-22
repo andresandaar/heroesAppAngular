@@ -1,44 +1,88 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of, tap } from 'rxjs';
-import { environments } from 'src/environments/environments';
-import { User } from '../interfaces/user.interface';
 
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, catchError, map, of, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environments';
+import { User } from '../interfaces/user.interface';
+import { HttpsService } from 'src/app/services/https.service';
+import { Auth, AuthResponse } from '../interfaces/auth.interface';
+import { JwtHelperService } from "@auth0/angular-jwt";
+const helper = new JwtHelperService
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl: string = environments.baseUrl;
-  private user?:User
+  private user?: User;
 
-  constructor(private http: HttpClient) {}
-
-  get currentUser():User | undefined {
+  get currentUser(): User | undefined {
     if (!this.user) return undefined;
     return structuredClone(this.user);
   }
 
-  login(email:string, password:string): Observable<User> {
+  private isLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+
+  constructor(private httpsService: HttpsService) {
+    this.checkToken();
+  }
+
+  // Observable para notificar cuando el usuario ha iniciado sesión
+  get isLogged$(): Observable<boolean> {
+    return this.isLogged.asObservable();
+  }
+
+  registrarUsuario(newUser: User): Observable<AuthResponse | void> {
+    return this.httpsService
+      .post(environment.andresApiRestBaseUrl + '/user/register', newUser)
+      .pipe(
+        map((resp) => resp.body),
+        tap((res: AuthResponse) => this.saveToken(res.token)),
+        tap(() => this.isLogged.next(true)),
+        catchError((err) => this.handlerError(err))
+      );
+  }
+
+  login(credentials: Auth): Observable<AuthResponse | void> {
+    return this.httpsService
+      .post(environment.andresApiRestBaseUrl + '/user/login', credentials)
+      .pipe(
+        map((resp) => resp.body),
+        tap((res: AuthResponse) => this.saveToken(res.token)),
+        tap(() => this.isLogged.next(true)),
+        catchError((err) => this.handlerError(err))
+      );
+  }
+
+  private checkToken() {
+    const userToken = localStorage.getItem('token');
+    const isExpired = helper.isTokenExpired(userToken);
+    isExpired ? this.logout() : this.isLogged.next(true);
+  }
+  /*   checkAuthentication(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    if (!token) return of(false);
+
     return this.http.get<User>(`${this.baseUrl}/users/1`).pipe(
-      tap(user=>this.user=user),
-      tap(user=> localStorage.setItem('token','jjkk7.889hgjjtfr88.9mmhgñ'))
+      tap((user) => (this.user = user)),
+      map((user) => !!user),
+      catchError((err) => of(false))
     );
+  } */
+
+  logout(): void {
+    this.isLogged.next(false);
+     localStorage.clear();
   }
-
-  checkAuthentication():Observable<boolean>{
-    if(!localStorage.getItem('token')) return of(false);
-
-    const token=localStorage.getItem('token');
-
-   return this.http.get<User>(`${this.baseUrl}/users/1`).pipe(
-     tap((user) => (this.user = user)),
-     map((user)=>!!user),
-     catchError(err=> of(false))
-   );
+  private saveToken(token: string) {
+    localStorage.setItem('token', token);
   }
-
-  logout(){
-    this.user=undefined;
-    localStorage.clear()
+  private handlerError(error: { error: { message: any } }): Observable<never> {
+    let errorMessage = 'An error occured retrienving data';
+    console.log(error)
+    if (error) {
+      errorMessage = `${error.error.message}`;
+    }
+    //window.alert(errorMessage);
+   return throwError(() => new Error(errorMessage));
   }
 }

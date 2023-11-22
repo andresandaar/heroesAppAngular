@@ -1,4 +1,4 @@
-
+/*
 import { inject } from '@angular/core';
 import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
 
@@ -22,4 +22,4 @@ export const publicGuardCanActivate: CanActivateFn = (route, state) => {
 
 export const publicGuardCanMatch: CanMatchFn = () => {
  return checkAuthStatus();
-};
+}; */

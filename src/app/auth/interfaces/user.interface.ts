@@ -1,7 +1,11 @@
+import { Auth } from "./auth.interface";
+export interface User extends Auth {
+    name: string;
+    surname: string;
+    role: roleType;
+}
 
-
-export interface User {
-  id:    number;
-  user:  string;
-  email: string;
+export enum roleType {
+  Admin = 'Admin',
+  Client = 'Client',
 }

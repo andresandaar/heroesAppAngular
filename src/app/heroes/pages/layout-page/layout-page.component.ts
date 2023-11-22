@@ -28,11 +28,14 @@ export class LayoutPageComponent {
   ];
 
 
-  constructor(private authServices: AuthService, private router: Router) {}
+  constructor(private authServices: AuthService, private router: Router) {
+    console.log(this.authServices.currentUser);
+  }
 
 get user():User | undefined {
   return this.authServices.currentUser;
 }
+
   onLogout() {
     this.authServices.logout();
      this.router.navigate(['/auth']);

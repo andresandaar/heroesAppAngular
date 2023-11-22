@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+/* import { inject } from '@angular/core';
 import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
 
 import { Observable, tap } from 'rxjs';
@@ -22,3 +22,4 @@ export const authGuardCanActivate: CanActivateFn = (route, state) => {
 export const authGuardCanMatch: CanMatchFn = () => {
  return checkAuthStatus();
 };
+ */

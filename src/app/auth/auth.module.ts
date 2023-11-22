@@ -6,6 +6,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -13,12 +15,14 @@ import { MaterialModule } from '../material/material.module';
   declarations: [
     LoginPageComponent,
     LayoutPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    MaterialModule
-  ]
+    MaterialModule,
+    ReactiveFormsModule,
+    NgxSpinnerModule,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}
