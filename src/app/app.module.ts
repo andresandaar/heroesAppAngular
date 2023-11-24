@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './core/shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from 'src/interceptors/auth.interceptor';
-import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { AuthInterceptor } from 'src/app/core/interceptors/auth.interceptor';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -18,7 +18,7 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    NavBarComponent
+    CoreModule,
   ],
   providers: [
     {

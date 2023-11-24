@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Heroes</a>
+    <button mat-icon-button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <div *ngIf="!isLogged">
+        <!-- Botones de inicio de sesión y registro -->
+        <button class="mr-3 text-white border-white" mat-stroked-button (click)="navigate('/auth/login')">Iniciar
+          sesión</button>
+        <button mat-flat-button (click)="navigate('/auth/new-account')">Registrarse</button>
+      </div>
+
+      <!-- Submenú para usuarios autenticados -->
+      <div *ngIf="isLogged" class="user-menu ">
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>Perfil</button>
+          <button mat-menu-item (click)="onLogout()">Cerrar sesión</button>
+          <!-- Agrega más opciones según sea necesario -->
+        </mat-menu>
+      </div>
+    </div>
+
+  </div>
+</nav>
+

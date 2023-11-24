@@ -1,41 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Error404PageComponent } from './shared/pages/error404-page/error404-page/error404-page.component';
-import { authGuardCanActivate, authGuardCanMatch } from './auth/guards/auth.guard';
-import { publicGuardCanActivate, publicGuardCanMatch } from './auth/guards/public.guard';
+import { Error404PageComponent } from './core/shared/pages/error404-page/error404-page/error404-page.component';
+import { authGuardCanActivate, authGuardCanMatch } from './core/guards/auth.guard';
+
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    canActivate: [publicGuardCanActivate],
-    canMatch: [publicGuardCanMatch],
-  },
-  {
-    path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('./public/public.module').then((m) => m.PublicModule),
+  },
+
+  {
+    path: 'intranet',
+    loadChildren: () =>
+      import('./intranet/intranet.module').then((m) => m.IntranetModule),
     canActivate: [authGuardCanActivate],
     canMatch: [authGuardCanMatch],
   },
+
   {
     path: '404',
     component: Error404PageComponent,
   },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
-    {
-    path: '**',
-    redirectTo: 'home',
-  },
+  { path: '**', component: Error404PageComponent },
 ];
 
 @NgModule({
