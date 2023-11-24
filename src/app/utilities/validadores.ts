@@ -116,4 +116,27 @@ export class MyValidators {
       return null;
     };
   }
+
+  static password(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const value: string = control?.value;
+     if (
+       !numberRegex.test(value) ||
+       !lowercaseRegex.test(value) ||
+       !capitalletterRegex.test(value)
+     ) {
+       return {
+         ...(numberRegex.test(value) ? null : { numbers: { required: true } }),
+         ...(lowercaseRegex.test(value)
+           ? null
+           : { lowerCase: { required: true } }),
+         ...(capitalletterRegex.test(value)
+           ? null
+           : { capitalLetter: { required: true } }),
+       };
+     }
+
+    return null;
+  };
+  }
 }

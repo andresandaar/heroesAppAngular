@@ -58,6 +58,7 @@ export class AuthService {
     const isExpired = helper.isTokenExpired(userToken);
     isExpired ? this.logout() : this.isLogged.next(true);
   }
+  
   /*   checkAuthentication(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (!token) return of(false);
@@ -73,12 +74,13 @@ export class AuthService {
     this.isLogged.next(false);
      localStorage.clear();
   }
+
   private saveToken(token: string) {
     localStorage.setItem('token', token);
   }
+
   private handlerError(error: { error: { message: any } }): Observable<never> {
     let errorMessage = 'An error occured retrienving data';
-    console.log(error)
     if (error) {
       errorMessage = `${error.error.message}`;
     }

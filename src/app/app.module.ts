@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from 'src/interceptors/auth.interceptor';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { AuthInterceptor } from 'src/interceptors/auth.interceptor';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
+    NavBarComponent
   ],
   providers: [
     {

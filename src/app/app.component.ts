@@ -8,6 +8,23 @@ import { AuthService } from './auth/services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  public sidebarItems = [
+    {
+      label: 'Listado',
+      icon: 'label',
+      url: './list',
+    },
+    {
+      label: 'Añadir',
+      icon: 'add',
+      url: './new-hero',
+    },
+    {
+      label: 'Buscar',
+      icon: 'search',
+      url: './search',
+    },
+  ];
   constructor(private authService: AuthService) {}
 
   ngOnInit() {

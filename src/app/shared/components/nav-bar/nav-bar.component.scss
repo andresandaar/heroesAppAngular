@@ -1,0 +1,11 @@
+
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ajusta el índice z si es necesario para superponer otros elementos */
+    background-color: #673ab7 !important;
+    color: white !important
+  }
+  a{
+  color: white !important
+}

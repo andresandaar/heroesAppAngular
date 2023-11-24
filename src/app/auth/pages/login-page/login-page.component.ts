@@ -12,18 +12,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
   public myForm: FormGroup = this.fb.group({
-    email: [
-      '',
-      [Validators.required, MyValidators.email()],
-    ],
+    email: ['', [Validators.required, MyValidators.email()]],
     password: [
       '',
       [
         Validators.required,
         MyValidators.characterMinLength(10),
-        MyValidators.capitalLetter(),
-        MyValidators.lowerCase(),
-        MyValidators.numbers()
+        MyValidators.password(),
       ],
     ],
   });
@@ -80,11 +75,13 @@ export class LoginPageComponent implements OnInit {
     this.spinner.show();
     let credentialUser = this.myForm.getRawValue();
     this.authServices.login(credentialUser).subscribe({
-      next: () => {
-        localStorage.setItem('email', this.email?.value);
-        this.spinner.hide();
-        this.myForm.reset();
-        this.router.navigate(['/']);
+      next: (res) => {
+            if (res) {
+              localStorage.setItem('email', this.email?.value);
+              this.myForm.reset();
+              this.spinner.hide();
+              this.router.navigate(['/heroes']);
+            }
       },
       error: (err) => {
         console.log(err);

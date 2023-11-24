@@ -28,8 +28,7 @@ export class LayoutPageComponent {
   ];
 
 
-  constructor(private authServices: AuthService, private router: Router) {
-    console.log(this.authServices.currentUser);
+  constructor(public authServices: AuthService, private router: Router) {
   }
 
 get user():User | undefined {
