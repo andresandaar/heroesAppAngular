@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../interfaces/hero.interface';
-import { HeroesService } from '../../services/heroes.service';
+import { switchMap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { delay, switchMap } from 'rxjs';
+import { Hero } from '../../interfaces/hero.interface';
+import { HeroesService } from '@intranet_heroes/services/heroes.service';
 
 @Component({
   selector: 'heroes-hero-page',
   templateUrl: './hero-page.component.html',
-  /* styleUrls: ['./hero-page.component.scss'] */
 })
 export class HeroPageComponent implements OnInit {
   public heroe?: Hero;

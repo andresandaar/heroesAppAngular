@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MyValidators } from 'src/app/core/utils/validadores';
-import { AuthService } from '../../services/auth.service';
+import { MyValidators } from "@core_utils/validadores";
+import { AuthService } from '@auth_services/auth.service';
 
 @Component({
   selector: 'auth-login-page',

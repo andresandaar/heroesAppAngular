@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { roleType } from '../../models/interfaces/user.interface';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { MyValidators } from 'src/app/core/utils/validadores';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { roleType } from '@auth_models/user.interface';
+import { AuthService } from '@auth_services/auth.service';
+import { MyValidators } from '@core_utils/validadores';
 
 @Component({
   selector: 'auth-register-page',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Error404PageComponent } from './core/shared/pages/error404-page/error404-page/error404-page.component';
-import { authGuardCanActivate, authGuardCanMatch } from './core/guards/auth.guard';
+import { authGuardCanActivate, authGuardCanMatch } from '@core_guards/auth.guard';
+import { Error404PageComponent } from '@core_shared/pages/error404-page/error404-page.component';
 
 
 const routes: Routes = [

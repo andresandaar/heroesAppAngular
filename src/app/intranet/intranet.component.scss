@@ -9,3 +9,40 @@
   justify-content: center;
 }
 
+.active{
+  background: whitesmoke;
+  .link-text{
+    color: #673ab7 !important;
+  }
+  mat-icon {
+      color: #673ab7 !important;
+  }
+
+}
+
+.active_panel{
+/* background: whitesmoke; */
+}
+mat-expansion-panel{
+  border-radius: 0 !important;
+  box-shadow: none !important ;
+}
+.vertical {
+  border-left: 5px solid black;
+  height: 100%;
+
+    position: absolute;
+
+    z-index: 1;
+}
+.mat-exp-pa-he-princ{
+  padding: 0;
+  padding-right: 16px;
+}
+.mat-exp-pa-he-hijo{
+  padding: 0;
+  padding-right: 10px;
+  padding-left:10px ;
+}
+
+

@@ -4,7 +4,7 @@ import { PublicComponent } from './public.component';
 import {
   publicGuardCanActivate,
   publicGuardCanMatch,
-} from '../core/guards/public.guard';
+} from '@core_guards/public.guard';
 const routes: Routes = [
   {
     path: '',

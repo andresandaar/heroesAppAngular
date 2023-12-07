@@ -1,8 +1,25 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@core/*":["src/app/core/*"],
+      "@core_shared/*":["src/app/core/shared/*"],
+      "@core_guards/*":["src/app/core/guards/*"],
+      "@core_interceptors/*":["src/app/core/interceptors/*"],
+      "@core_services/*":["src/app/core/services/*"],
+      "@core_utils/*":["src/app/core/utils/*"],
+      "@intranet/*":["src/app/intranet/*"],
+      "@intranet_heroes/*":["src/app/intranet/heroes/*"],
+      "@intranet_users/*":["src/app/intranet/users/*"],
+      "@public/*":["src/app/public/*"],
+      "@public_auth/*":["src/app/public/auth/*"],
+      "@auth_guards/*":["src/app/public/auth/guards/*"],
+      "@auth_services/*":["src/app/public/auth/services/*"],
+      "@auth_models/*":["src/app/public/auth/models/interfaces/*"],
+      "@public_home/*":["src/app/public/home/*"],
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

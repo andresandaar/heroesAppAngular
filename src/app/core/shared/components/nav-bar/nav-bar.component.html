@@ -1,25 +1,69 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<header class="topbar">
+  <nav class="navbar top-navbar navbar-expand-lg flex-nowrap align-items-stretch">
 
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Heroes</a>
-    <button mat-icon-button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
-        <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['/home']">Home</a>
+    <div class="navbar-header d-flex">
+      <!-- ============================================================== -->
+      <!-- Logo -->
+      <!-- ============================================================== -->
+      <a class="navbar-brand d-flex gap-1 align-items-center" [routerLink]="['/home']">
+        <img src="../../../../../favicon.ico" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        <span class="d-none d-lg-block color-white ">Andaar</span>
+      </a>
+      <!-- ============================================================== -->
+      <!-- End Logo -->
+      <!-- ============================================================== -->
+    </div>
+
+    <div class="navbar-collapse d-flex">
+      <!-- toggle and nav items -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav me-auto">
+        <!-- This is  -->
+        <li class="nav-item curs-poin" (click)="toogle(false)" [ngClass]="{'d-none': !isToogle}">
+          <a class="nav-link nav-toggler color-white">
+            <mat-icon>clear</mat-icon>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+
+        <li class="nav-item curs-poin" (click)="toogle(true)" [ngClass]="{'d-none': isToogle}">
+          <a class="nav-link sidebartoggler d-flex color-white">
+            <mat-icon>menu</mat-icon>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+      </ul>
+      <!-- ============================================================== -->
+
+      <!-- ============================================================== -->
+      <!-- User profile and search -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav h-100">
+        <!-- Submenú para usuarios autenticados -->
+        <!-- Profile -->
+        <!-- ============================================================== -->
+        <li class="nav-item dropdown d-flex h-100 align-items-center " *ngIf="isLogged">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/images/users/1.jpg" alt="user" class="profile-pic" />
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-end position-absolute">
+            <ul class="dropdown-user">
+              <li>
+                <div class="dw-user-box">
+                  <div class="u-img"><img src="./assets/images/users/1.jpg" alt="user"></div>
+                  <div class="u-text">
+                    <h4>Steave Jobs</h4>
+                    <p class="text-muted">varunmail.com</p><a class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                  </div>
+                </div>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><a (click)="navigate('/intranet')"><mat-icon>person_outline</mat-icon> Mi Perfil</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a (click)="onLogout()"><mat-icon>power_settings_new</mat-icon> Cerrar sesión</a></li>
+            </ul>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
       </ul>
       <div *ngIf="!isLogged">
         <!-- Botones de inicio de sesión y registro -->
@@ -28,19 +72,7 @@
         <button mat-flat-button (click)="navigate('/auth/new-account')">Registrarse</button>
       </div>
 
-      <!-- Submenú para usuarios autenticados -->
-      <div *ngIf="isLogged" class="user-menu ">
-        <button mat-icon-button [matMenuTriggerFor]="userMenu">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-        <mat-menu #userMenu="matMenu">
-          <button mat-menu-item>Perfil</button>
-          <button mat-menu-item (click)="onLogout()">Cerrar sesión</button>
-          <!-- Agrega más opciones según sea necesario -->
-        </mat-menu>
-      </div>
     </div>
 
-  </div>
-</nav>
-
+  </nav>
+</header>

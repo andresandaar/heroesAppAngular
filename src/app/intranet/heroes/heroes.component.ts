@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/public/auth/models/interfaces/user.interface';
-import { AuthService } from 'src/app/public/auth/services/auth.service';
+import { User } from '@auth_models/user.interface';
+import { AuthService } from '@auth_services/auth.service';
 
 @Component({
   selector: 'app-heroes',

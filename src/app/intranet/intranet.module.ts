@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-import { IntranetRoutingModule } from './intranet-routing.module';
-import { IntranetComponent } from './intranet.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { SharedModule } from '../core/shared/shared.module';
 import { MaterialModule } from '../material/material.module';
-import { RouterModule } from '@angular/router';
-
+import { IntranetRoutingModule } from './intranet-routing.module';
+import { IntranetComponent } from './intranet.component';
+import { SharedModule } from '@core_shared/shared.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -17,6 +16,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatButtonModule,
     MatSidenavModule,
+    MatExpansionModule,
     MaterialModule,
     RouterModule,
     SharedModule,
