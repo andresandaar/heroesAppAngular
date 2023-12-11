@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MaterialModule } from 'src/app/material/material.module';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
@@ -23,6 +24,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
+    MatRippleModule,
     MatExpansionModule,
     MaterialModule,
     RouterModule,

@@ -1,47 +1,43 @@
 <header class="topbar">
   <nav class="navbar top-navbar navbar-expand-lg flex-nowrap align-items-stretch">
-
-    <div class="navbar-header d-flex">
-      <!-- ============================================================== -->
-      <!-- Logo -->
-      <!-- ============================================================== -->
-      <a class="navbar-brand d-flex gap-1 align-items-center" [routerLink]="['/home']">
+    <!-- ============================================================== -->
+    <!-- Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-header">
+      <a class="navbar-brand d-flex align-items-center gap-1 " [routerLink]="['/home']">
         <img src="../../../../../favicon.ico" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
         <span class="d-none d-lg-block color-white ">Andaar</span>
       </a>
-      <!-- ============================================================== -->
-      <!-- End Logo -->
-      <!-- ============================================================== -->
     </div>
-
-    <div class="navbar-collapse d-flex">
-      <!-- toggle and nav items -->
+    <!-- ============================================================== -->
+    <!-- End Logo -->
+    <!-- ============================================================== -->
+    <div class="navbar-collapse d-flex ">
       <!-- ============================================================== -->
-      <ul class="navbar-nav me-auto">
-        <!-- This is  -->
-        <li class="nav-item curs-poin" (click)="toogle(false)" [ngClass]="{'d-none': !isToogle}">
-          <a class="nav-link nav-toggler color-white">
-            <mat-icon>clear</mat-icon>
-          </a>
-        </li>
-
-        <li class="nav-item curs-poin" (click)="toogle(true)" [ngClass]="{'d-none': isToogle}">
-          <a class="nav-link sidebartoggler d-flex color-white">
-            <mat-icon>menu</mat-icon>
+      <!-- toggle -->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav me-auto h-100 button-toggle">
+        <li matRipple class="nav-item curs-pointer h-100" (click)="toogle()">
+          <a class="nav-link color-white">
+            <mat-icon *ngIf="isToogle; else menuIcon">clear</mat-icon>
+            <ng-template #menuIcon>
+              <mat-icon>menu</mat-icon>
+            </ng-template>
           </a>
         </li>
       </ul>
       <!-- ============================================================== -->
-
+      <!-- end toggle -->
       <!-- ============================================================== -->
-      <!-- User profile and search -->
       <!-- ============================================================== -->
-      <ul class="navbar-nav h-100">
+      <!-- User profile autenticado-->
+      <!-- ============================================================== -->
+      <ul class="navbar-nav h-100" *ngIf="isLogged">
         <!-- Submenú para usuarios autenticados -->
         <!-- Profile -->
         <!-- ============================================================== -->
-        <li class="nav-item dropdown d-flex h-100 align-items-center " *ngIf="isLogged">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item dropdown  curs-poin d-flex h-100 align-items-center">
+          <a matRipple class="nav-link dropdown-toggle h-100 d-flex" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="./assets/images/users/1.jpg" alt="user" class="profile-pic" />
           </a>
 
@@ -65,13 +61,21 @@
         </li>
 
       </ul>
+      <!-- ============================================================== -->
+      <!-- end User profile-->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- opciones no autenticado-->
+      <!-- ============================================================== -->
       <div *ngIf="!isLogged">
         <!-- Botones de inicio de sesión y registro -->
         <button class="mr-3 text-white border-white" mat-stroked-button (click)="navigate('/auth/login')">Iniciar
           sesión</button>
         <button mat-flat-button (click)="navigate('/auth/new-account')">Registrarse</button>
       </div>
-
+      <!-- ============================================================== -->
+      <!-- end opciones no autenticado-->
+      <!-- ============================================================== -->
     </div>
 
   </nav>

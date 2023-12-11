@@ -6,9 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Output() OnMatlistItem: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  panelPrinc: boolean = false;
+  @Output() OnOptionItem: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public sidebarItems = [
     {
@@ -27,7 +25,7 @@ export class SidebarComponent {
       url: 'intranet/heroes/search',
     },
   ];
-  panelOpenState = false;
+
   panels = [
     {
       title: 'Panel 1',
@@ -47,16 +45,8 @@ export class SidebarComponent {
     },
     // Puedes agregar más paneles y niveles según sea necesario
   ];
-  step = 0;
 
-  panelOpenPrinc() {
-    this.panelPrinc = true;
-  }
-  panelClosePrinc() {
-    this.panelPrinc = false;
-  }
-
-  matlistItem() {
-    this.OnMatlistItem.emit(true);
+  optionItem() {
+    this.OnOptionItem.emit(true);
   }
 }

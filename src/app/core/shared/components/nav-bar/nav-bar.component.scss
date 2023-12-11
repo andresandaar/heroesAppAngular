@@ -2,13 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Ajusta el índice z si es necesario para superponer otros elementos */
   color: white !important;
   width: 100%;
   background: #673ab7 !important;
 }
-
-a {}
 
 .color-white {
   color: white !important
@@ -33,12 +30,10 @@ a {}
 
 .navbar-collapse {
   padding: 0 10px;
-
 }
 
 .profile-pic {
-
-  width: 30px;
+  width: 100%;
   border-radius: 100%;
 }
 
@@ -54,6 +49,7 @@ a {}
     list-style: none;
     padding: 0px;
     margin: 0px;
+
 
     a {
       padding: 9px 15px;
@@ -148,4 +144,17 @@ a {}
 }
 .curs-poin{
   cursor: pointer;
+}
+.nav-item:has(.show) {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.nav-item{
+      user-select: none;
+}
+.button-toggle,
+.button-toggle li,
+.button-toggle a {
+  display: flex;
+  align-items: center;
 }

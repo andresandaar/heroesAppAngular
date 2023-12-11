@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./intranet.component.scss'],
 })
 export class IntranetComponent {
-
-
-
+  onSidenav: boolean = false;
+  toogle() {
+    this.onSidenav = !this.onSidenav;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '@auth_services/auth.service';
@@ -11,9 +11,10 @@ import { AuthService } from '@auth_services/auth.service';
 })
 export class NavBarComponent {
   @Output() OnToogle: EventEmitter<boolean>  = new EventEmitter<boolean>();
+  @Input()   isToogle: boolean = false;
 
   isLogged: boolean = false;
-  isToogle: boolean = false;
+
   private subscription: Subscription = new Subscription();
 
   constructor(public authService: AuthService, private router: Router) {}
@@ -35,9 +36,9 @@ export class NavBarComponent {
     this.router.navigate(['/auth']);
   }
 
-  toogle(status: boolean) {
-   this.OnToogle.emit(status)
-    this.isToogle = status;
+  toogle() {
+    this.isToogle = !this.isToogle;
+   this.OnToogle.emit(this.isToogle);
   }
   navigate(url: string) {
     this.router.navigate([url]);
